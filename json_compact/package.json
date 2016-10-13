@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "aws-sdk": ">= 2.0.9",
+    "json-url": "^1.0.4",
+    "node-uuid": ">= 1.4.1",
+    "node-v8-clone": "",
+    "q": "^1.4.1",
+    "underscore": "^1.8.3",
+  }
+}
