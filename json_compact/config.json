@@ -1,0 +1,14 @@
+{
+  "dynamo_cms": {
+    "key": "keykeykey",
+    "secret": "keykeykey",
+    "tbl":"tableNametableName",
+    "region":"ap-northeast-1"
+  },
+  "dynamo_sandbox": {
+    "key": "keykeykey",
+    "secret": "keykeykey",
+    "tbl":"tableNametableName",
+    "region":"ap-northeast-1"
+  }
+}
