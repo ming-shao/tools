@@ -4,6 +4,7 @@ var Q = require('q');
 var __ = require('underscore');
 typeof __.each === 'function'
 
+var sizeof = require('object-sizeof');
 
 module.exports = function (key, org_db, new_db, callback) {
 
@@ -21,7 +22,7 @@ module.exports = function (key, org_db, new_db, callback) {
           getItemFromtbl(org_doc, org_db.tbl, key)
           ])
           .then(function(dataArray){
-              s_content_compare(key, dataArray[0].Item.content, dataArray[1].Item.content);
+              item_compare(key, dataArray[0], dataArray[1]);
           }, function(err){
            console.log(err);
           });
@@ -45,22 +46,21 @@ module.exports = function (key, org_db, new_db, callback) {
     return deferred.promise.nodeify(callback);
   };
 
-  function s_content_compare(key, b64, org){
-     if (b64 != null && org !=null) {
+  function item_compare(key, new_item, org_item){
+     if (new_item.Item.content != null && org_item.Item.content !=null) {
          //console.time('timer');
-       ju_comp.decompress(b64, function(err, result){
+       ju_comp.decompress(new_item.Item.content, function(err, result){
          //console.timeEnd('timer');
-        if(__.isEqual(result, org)){
-          console.log(key+":ok");
+        if(__.isEqual(result, org_item.Item.content)){
+          //console.log(key+":ok");
+          console.log(key + "," + sizeof(new_item) + "," + sizeof(org_item));
         }else{
-          console.log(key+":ng");
-          //console.log(org);
+          console.log("error:" + key+",ng");
         }
       });
 
-
      }else {
-       console.log(key+":empty");
+       console.log("error:" + key+",empty");
      };
 
   }

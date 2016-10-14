@@ -4,7 +4,8 @@
     "json-url": "^1.0.4",
     "node-uuid": ">= 1.4.1",
     "node-v8-clone": "",
+    "object-sizeof": "^1.1.1",
     "q": "^1.4.1",
-    "underscore": "^1.8.3",
+    "underscore": "^1.8.3"
   }
 }
